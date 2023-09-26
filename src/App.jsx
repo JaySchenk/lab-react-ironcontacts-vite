@@ -95,7 +95,3 @@ function App() {
   );
 }
 export default App;
-
-// button -> math.random i !== contact.id displayed
-
-// Math.random if id == id list > roll again else print
