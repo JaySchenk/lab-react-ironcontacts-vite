@@ -29,7 +29,6 @@ function App() {
       }
       return 0;
     });
-    console.log(ratedContacts);
     setContacts(ratedContacts);
   };
 
