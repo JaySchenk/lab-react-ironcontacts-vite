@@ -7,12 +7,16 @@ function App() {
   const [contacts, setContacts] = useState(contactsJSON.slice(0, 5));
 
   const addRandomContact = () => {
-    const randomIndex = Math.floor(Math.random() * remaining.length);
-    const randomContact = remaining[randomIndex];
-    setContacts([...contacts, randomContact]);
-    const newRemaining = JSON.parse(JSON.stringify(remaining));
-    newRemaining.splice(randomIndex, 1);
-    setRemaining(newRemaining);
+    if (remaining.length === 0) {
+      return;
+    } else {
+      const randomIndex = Math.floor(Math.random() * remaining.length);
+      const randomContact = remaining[randomIndex];
+      setContacts([...contacts, randomContact]);
+      const newRemaining = JSON.parse(JSON.stringify(remaining));
+      newRemaining.splice(randomIndex, 1);
+      setRemaining(newRemaining);
+    }
   };
 
   const sortByPopular = () => {
