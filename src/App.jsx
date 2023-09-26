@@ -6,7 +6,7 @@ function App() {
   const [remaining, setRemaining] = useState(contactsJSON.slice(5));
   const [contacts, setContacts] = useState(contactsJSON.slice(0, 5));
 
-  const handleClick = () => {
+  const addRandomContact = () => {
     const randomIndex = Math.floor(Math.random() * remaining.length);
     const randomContact = remaining[randomIndex];
     setContacts([...contacts, randomContact]);
@@ -15,7 +15,7 @@ function App() {
     setRemaining(newRemaining);
   };
 
-  const handleClick2 = () => {
+  const sortByPopular = () => {
     const ratedContacts = [...contacts].sort((a, b) => {
       if (a.popularity < b.popularity) {
         return 1;
@@ -29,7 +29,7 @@ function App() {
     setContacts(ratedContacts);
   };
 
-  const handleClick3 = () => {
+  const sortByAlphabet = () => {
     const sortedContacts = [...contacts].sort((a, b) => {
       if (a.name < b.name) {
         return -1;
@@ -42,7 +42,7 @@ function App() {
     setContacts(sortedContacts);
   };
 
-  const handleClick4 = (id) => {
+  const deleteContactButt = (id) => {
     const updatedContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(updatedContacts);
   };
@@ -50,9 +50,9 @@ function App() {
   return (
     <div className="App">
       <h1>This Website Is Pretty! -Sparkle-</h1>
-      <button onClick={() => handleClick()}>Add Random Contact</button>
-      <button onClick={() => handleClick2()}>Sort by popular</button>
-      <button onClick={() => handleClick3()}>Sort by alphabet</button>
+      <button onClick={addRandomContact}>Add Random Contact</button>
+      <button onClick={sortByPopular}>Sort by popular</button>
+      <button onClick={sortByAlphabet}>Sort by alphabet</button>
       <table>
         <thead>
           <tr>
@@ -80,7 +80,7 @@ function App() {
                 <td>{oneContact.wonEmmy ? "🏆 " : ""}</td>
                 <td>
                   {" "}
-                  <button onClick={() => handleClick4(oneContact.id)}>
+                  <button onClick={() => deleteContactButt(oneContact.id)}>
                     Delete
                   </button>
                 </td>
