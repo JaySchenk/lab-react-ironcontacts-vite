@@ -43,8 +43,10 @@ function App() {
   };
 
   const deleteContactButt = (id) => {
+    const deletedContact = contactsJSON.find((contact) => contact.id === id);
     const updatedContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(updatedContacts);
+    setRemaining((prevRemaining) => [...prevRemaining, deletedContact]);
   };
 
   return (
